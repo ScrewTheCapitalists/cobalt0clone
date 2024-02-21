@@ -178,17 +178,21 @@ export function streamVideoOnly(streamInfo, res) {
         let args = [
             '-loglevel', '-8'
         ]
+
         if (streamInfo.service === "twitter") {
             args.push('-seekable', '0')
         }
+
         args.push(
             '-i', streamInfo.urls,
             '-c', 'copy'
         )
+
         if (streamInfo.mute) {
             args.push('-an')
         }
-        if (streamInfo.service === "vimeo" || streamInfo.service === "rutube") {
+
+        if (["vimeo", "rutube", "dailymotion"].includes(streamInfo.service)) {
             args.push('-bsf:a', 'aac_adtstoasc')
         }
 

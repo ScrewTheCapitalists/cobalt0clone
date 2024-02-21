@@ -2,6 +2,8 @@ export const testers = {
     "bilibili": (patternMatch) =>
         patternMatch.id?.length <= 12,
 
+    "dailymotion": (patternMatch) => patternMatch.id?.length <= 32,
+
     "instagram": (patternMatch) =>
         patternMatch.postId?.length <= 12
         || (patternMatch.username?.length <= 30 && patternMatch.storyId?.length <= 24),
